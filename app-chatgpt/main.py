@@ -21,7 +21,7 @@ def main():
 
     #Context of the assistant
     ChatGPT_role=input(" What use do you want to give to chatgpt?")
-    Context= {"role": "system", "content": "you are a useful asssitant"}
+    Context= {"role": "system", "content": ChatGPT_role}
     message=[Context] 
 
     while True:
@@ -34,6 +34,8 @@ def main():
     
 
         if content == "new":
+            ChatGPT_role=input(" What use do you want to give to chatgpt?")
+            Context= {"role": "system", "content": ChatGPT_role}
             message = [Context] 
             print("[green] nueva conversacion[/green]")
             content=__prompt()
@@ -49,7 +51,7 @@ def main():
                 "content": response_content,
             })
 
-        print(f"[green]{response_content}[/green]")
+        print(f"[green bold] > [/green bold][green]{response_content}[/green]")
 
 def __prompt() -> str:
     prompt=typer.prompt("What do you want to say to ChatGPT? ")
